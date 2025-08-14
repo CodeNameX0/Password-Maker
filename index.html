@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜덤 비밀번호 생성기</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .container { background: #fff; padding: 2rem 3rem; border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.1); }
+        h1 { color: #333; }
+        input[type=number] { width: 60px; padding: 0.3rem; margin-right: 1rem; }
+        button { padding: 0.5rem 1.2rem; background: #0078d7; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 1rem; }
+        button:hover { background: #005fa3; }
+        #result { margin-top: 1.5rem; font-size: 1.2rem; word-break: break-all; background: #f0f0f0; padding: 0.7rem 1rem; border-radius: 6px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>랜덤 비밀번호 생성기</h1>
+        <label for="length">길이:</label>
+        <input type="number" id="length" min="4" max="32" value="12">
+        <button onclick="generatePassword()">생성</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        function generatePassword() {
+            const length = document.getElementById('length').value;
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=';
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                password += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById('result').textContent = password;
+        }
+    </script>
+</body>
+</html>
